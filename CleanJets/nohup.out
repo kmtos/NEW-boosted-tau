@@ -1,0 +1,177 @@
+# Conditions read from  CMS_CONDITIONS  via FrontierProd 
+02-Dec-2015 14:57:26 CET  Initiating request to open file root://eoscms//eos/cms/store/user/mshi/gg2H2aa2mumutautau_STEP_2_9GeV/gg2H2aa2mumutautau_STEP_2_9GeV_977.root
+%MSG-w XrdAdaptor:  file_open 02-Dec-2015 14:57:28 CET pre-events
+Data is served from cern.ch instead of original site eoscms
+%MSG
+02-Dec-2015 14:57:33 CET  Successfully opened file root://eoscms//eos/cms/store/user/mshi/gg2H2aa2mumutautau_STEP_2_9GeV/gg2H2aa2mumutautau_STEP_2_9GeV_977.root
+Begin processing the 1st record. Run 977, Event 69, LumiSection 1 at 02-Dec-2015 15:01:00.539 CET
+Begin processing the 2nd record. Run 977, Event 239, LumiSection 1 at 02-Dec-2015 15:01:08.836 CET
+Begin processing the 3rd record. Run 977, Event 345, LumiSection 1 at 02-Dec-2015 15:01:08.992 CET
+Begin processing the 4th record. Run 977, Event 568, LumiSection 1 at 02-Dec-2015 15:01:09.181 CET
+Begin processing the 5th record. Run 977, Event 624, LumiSection 1 at 02-Dec-2015 15:01:09.297 CET
+Begin processing the 6th record. Run 977, Event 788, LumiSection 1 at 02-Dec-2015 15:01:09.434 CET
+Begin processing the 7th record. Run 977, Event 1131, LumiSection 1 at 02-Dec-2015 15:01:09.531 CET
+Begin processing the 8th record. Run 977, Event 1178, LumiSection 1 at 02-Dec-2015 15:01:09.643 CET
+Begin processing the 9th record. Run 977, Event 1714, LumiSection 1 at 02-Dec-2015 15:01:09.751 CET
+Begin processing the 10th record. Run 977, Event 2154, LumiSection 1 at 02-Dec-2015 15:01:09.886 CET
+Begin processing the 11th record. Run 977, Event 2416, LumiSection 1 at 02-Dec-2015 15:01:09.993 CET
+Begin processing the 12th record. Run 977, Event 2658, LumiSection 1 at 02-Dec-2015 15:01:10.156 CET
+Begin processing the 13th record. Run 977, Event 2666, LumiSection 1 at 02-Dec-2015 15:01:10.467 CET
+Begin processing the 14th record. Run 977, Event 2809, LumiSection 1 at 02-Dec-2015 15:01:11.011 CET
+Begin processing the 15th record. Run 977, Event 3115, LumiSection 1 at 02-Dec-2015 15:01:11.121 CET
+Begin processing the 16th record. Run 977, Event 3116, LumiSection 1 at 02-Dec-2015 15:01:11.481 CET
+Begin processing the 17th record. Run 977, Event 3144, LumiSection 1 at 02-Dec-2015 15:01:11.781 CET
+Begin processing the 18th record. Run 977, Event 3223, LumiSection 1 at 02-Dec-2015 15:01:11.956 CET
+Begin processing the 19th record. Run 977, Event 3276, LumiSection 1 at 02-Dec-2015 15:01:12.041 CET
+Begin processing the 20th record. Run 977, Event 3298, LumiSection 1 at 02-Dec-2015 15:01:12.280 CET
+Begin processing the 21st record. Run 977, Event 3440, LumiSection 1 at 02-Dec-2015 15:01:12.371 CET
+Begin processing the 22nd record. Run 977, Event 3644, LumiSection 1 at 02-Dec-2015 15:01:12.843 CET
+Begin processing the 23rd record. Run 977, Event 3754, LumiSection 1 at 02-Dec-2015 15:01:13.351 CET
+Begin processing the 24th record. Run 977, Event 4011, LumiSection 1 at 02-Dec-2015 15:01:13.585 CET
+Begin processing the 25th record. Run 977, Event 4018, LumiSection 1 at 02-Dec-2015 15:01:13.651 CET
+Begin processing the 26th record. Run 977, Event 4063, LumiSection 1 at 02-Dec-2015 15:01:13.703 CET
+Begin processing the 27th record. Run 977, Event 4068, LumiSection 1 at 02-Dec-2015 15:01:13.851 CET
+Begin processing the 28th record. Run 977, Event 4446, LumiSection 1 at 02-Dec-2015 15:01:14.056 CET
+Begin processing the 29th record. Run 977, Event 4473, LumiSection 1 at 02-Dec-2015 15:01:14.447 CET
+Begin processing the 30th record. Run 977, Event 4503, LumiSection 1 at 02-Dec-2015 15:01:14.537 CET
+Begin processing the 31st record. Run 977, Event 4931, LumiSection 1 at 02-Dec-2015 15:01:14.887 CET
+Begin processing the 32nd record. Run 977, Event 4964, LumiSection 1 at 02-Dec-2015 15:01:15.141 CET
+Begin processing the 33rd record. Run 977, Event 5014, LumiSection 1 at 02-Dec-2015 15:01:15.432 CET
+Begin processing the 34th record. Run 977, Event 5114, LumiSection 1 at 02-Dec-2015 15:01:15.572 CET
+Begin processing the 35th record. Run 977, Event 5209, LumiSection 1 at 02-Dec-2015 15:01:15.690 CET
+Begin processing the 36th record. Run 977, Event 5433, LumiSection 1 at 02-Dec-2015 15:01:15.787 CET
+Begin processing the 37th record. Run 977, Event 5515, LumiSection 1 at 02-Dec-2015 15:01:15.907 CET
+Begin processing the 38th record. Run 977, Event 5590, LumiSection 1 at 02-Dec-2015 15:01:16.172 CET
+Begin processing the 39th record. Run 977, Event 5604, LumiSection 1 at 02-Dec-2015 15:01:16.296 CET
+Begin processing the 40th record. Run 977, Event 5877, LumiSection 1 at 02-Dec-2015 15:01:16.574 CET
+Begin processing the 41st record. Run 977, Event 5978, LumiSection 1 at 02-Dec-2015 15:01:16.642 CET
+Begin processing the 42nd record. Run 977, Event 6096, LumiSection 1 at 02-Dec-2015 15:01:16.860 CET
+Begin processing the 43rd record. Run 977, Event 6114, LumiSection 1 at 02-Dec-2015 15:01:17.062 CET
+Begin processing the 44th record. Run 977, Event 6310, LumiSection 1 at 02-Dec-2015 15:01:17.214 CET
+Begin processing the 45th record. Run 977, Event 6757, LumiSection 1 at 02-Dec-2015 15:01:17.303 CET
+Begin processing the 46th record. Run 977, Event 6801, LumiSection 1 at 02-Dec-2015 15:01:17.440 CET
+Begin processing the 47th record. Run 977, Event 6908, LumiSection 1 at 02-Dec-2015 15:01:17.530 CET
+Begin processing the 48th record. Run 977, Event 7026, LumiSection 1 at 02-Dec-2015 15:01:17.619 CET
+Begin processing the 49th record. Run 977, Event 7255, LumiSection 1 at 02-Dec-2015 15:01:17.767 CET
+Begin processing the 50th record. Run 977, Event 7358, LumiSection 1 at 02-Dec-2015 15:01:17.828 CET
+Begin processing the 51st record. Run 977, Event 7415, LumiSection 1 at 02-Dec-2015 15:01:17.912 CET
+Begin processing the 52nd record. Run 977, Event 7435, LumiSection 1 at 02-Dec-2015 15:01:18.001 CET
+Begin processing the 53rd record. Run 977, Event 7463, LumiSection 1 at 02-Dec-2015 15:01:18.140 CET
+Begin processing the 54th record. Run 977, Event 7471, LumiSection 1 at 02-Dec-2015 15:01:18.379 CET
+Begin processing the 55th record. Run 977, Event 7530, LumiSection 1 at 02-Dec-2015 15:01:18.481 CET
+Begin processing the 56th record. Run 977, Event 7600, LumiSection 1 at 02-Dec-2015 15:01:18.630 CET
+Begin processing the 57th record. Run 977, Event 7633, LumiSection 1 at 02-Dec-2015 15:01:18.830 CET
+Begin processing the 58th record. Run 977, Event 7640, LumiSection 1 at 02-Dec-2015 15:01:19.048 CET
+Begin processing the 59th record. Run 977, Event 7666, LumiSection 1 at 02-Dec-2015 15:01:19.134 CET
+Begin processing the 60th record. Run 977, Event 7809, LumiSection 1 at 02-Dec-2015 15:01:19.250 CET
+Begin processing the 61st record. Run 977, Event 7829, LumiSection 1 at 02-Dec-2015 15:01:19.352 CET
+Begin processing the 62nd record. Run 977, Event 7878, LumiSection 1 at 02-Dec-2015 15:01:19.450 CET
+Begin processing the 63rd record. Run 977, Event 7879, LumiSection 1 at 02-Dec-2015 15:01:19.646 CET
+Begin processing the 64th record. Run 977, Event 8076, LumiSection 1 at 02-Dec-2015 15:01:20.080 CET
+Begin processing the 65th record. Run 977, Event 8494, LumiSection 1 at 02-Dec-2015 15:01:20.303 CET
+Begin processing the 66th record. Run 977, Event 8669, LumiSection 1 at 02-Dec-2015 15:01:20.388 CET
+Begin processing the 67th record. Run 977, Event 8782, LumiSection 1 at 02-Dec-2015 15:01:20.465 CET
+Begin processing the 68th record. Run 977, Event 8994, LumiSection 1 at 02-Dec-2015 15:01:20.544 CET
+Begin processing the 69th record. Run 977, Event 9179, LumiSection 1 at 02-Dec-2015 15:01:20.742 CET
+Begin processing the 70th record. Run 977, Event 9239, LumiSection 1 at 02-Dec-2015 15:01:20.921 CET
+Begin processing the 71st record. Run 977, Event 9354, LumiSection 1 at 02-Dec-2015 15:01:21.115 CET
+Begin processing the 72nd record. Run 977, Event 9506, LumiSection 1 at 02-Dec-2015 15:01:21.244 CET
+Begin processing the 73rd record. Run 977, Event 9638, LumiSection 1 at 02-Dec-2015 15:01:21.367 CET
+Begin processing the 74th record. Run 977, Event 9735, LumiSection 1 at 02-Dec-2015 15:01:21.678 CET
+Begin processing the 75th record. Run 977, Event 9833, LumiSection 1 at 02-Dec-2015 15:01:21.996 CET
+Begin processing the 76th record. Run 977, Event 9891, LumiSection 1 at 02-Dec-2015 15:01:22.109 CET
+Begin processing the 77th record. Run 977, Event 9904, LumiSection 1 at 02-Dec-2015 15:01:22.450 CET
+Begin processing the 78th record. Run 977, Event 10538, LumiSection 1 at 02-Dec-2015 15:01:22.537 CET
+Begin processing the 79th record. Run 977, Event 10647, LumiSection 1 at 02-Dec-2015 15:01:22.692 CET
+Begin processing the 80th record. Run 977, Event 10679, LumiSection 1 at 02-Dec-2015 15:01:22.944 CET
+Begin processing the 81st record. Run 977, Event 10875, LumiSection 1 at 02-Dec-2015 15:01:22.996 CET
+Begin processing the 82nd record. Run 977, Event 10893, LumiSection 1 at 02-Dec-2015 15:01:23.141 CET
+Begin processing the 83rd record. Run 977, Event 10938, LumiSection 1 at 02-Dec-2015 15:01:23.227 CET
+Begin processing the 84th record. Run 977, Event 11034, LumiSection 1 at 02-Dec-2015 15:01:23.295 CET
+Begin processing the 85th record. Run 977, Event 11073, LumiSection 1 at 02-Dec-2015 15:01:23.417 CET
+Begin processing the 86th record. Run 977, Event 11077, LumiSection 1 at 02-Dec-2015 15:01:23.845 CET
+Begin processing the 87th record. Run 977, Event 11102, LumiSection 1 at 02-Dec-2015 15:01:23.922 CET
+Begin processing the 88th record. Run 977, Event 11256, LumiSection 1 at 02-Dec-2015 15:01:23.975 CET
+Begin processing the 89th record. Run 977, Event 11312, LumiSection 1 at 02-Dec-2015 15:01:24.213 CET
+Begin processing the 90th record. Run 977, Event 11640, LumiSection 1 at 02-Dec-2015 15:01:24.555 CET
+Begin processing the 91st record. Run 977, Event 11873, LumiSection 1 at 02-Dec-2015 15:01:24.663 CET
+Begin processing the 92nd record. Run 977, Event 11986, LumiSection 1 at 02-Dec-2015 15:01:24.843 CET
+Begin processing the 93rd record. Run 977, Event 12053, LumiSection 1 at 02-Dec-2015 15:01:24.942 CET
+Begin processing the 94th record. Run 977, Event 12120, LumiSection 1 at 02-Dec-2015 15:01:25.200 CET
+Begin processing the 95th record. Run 977, Event 12151, LumiSection 1 at 02-Dec-2015 15:01:25.564 CET
+Begin processing the 96th record. Run 977, Event 12204, LumiSection 1 at 02-Dec-2015 15:01:25.984 CET
+Begin processing the 97th record. Run 977, Event 12444, LumiSection 1 at 02-Dec-2015 15:01:26.071 CET
+Begin processing the 98th record. Run 977, Event 12497, LumiSection 1 at 02-Dec-2015 15:01:26.151 CET
+Begin processing the 99th record. Run 977, Event 13027, LumiSection 1 at 02-Dec-2015 15:01:26.339 CET
+Begin processing the 100th record. Run 977, Event 13068, LumiSection 1 at 02-Dec-2015 15:01:26.508 CET
+Begin processing the 101st record. Run 977, Event 13092, LumiSection 1 at 02-Dec-2015 15:01:26.851 CET
+Begin processing the 102nd record. Run 977, Event 13103, LumiSection 1 at 02-Dec-2015 15:01:26.983 CET
+Begin processing the 103rd record. Run 977, Event 13127, LumiSection 1 at 02-Dec-2015 15:01:27.050 CET
+Begin processing the 104th record. Run 977, Event 13249, LumiSection 1 at 02-Dec-2015 15:01:27.150 CET
+Begin processing the 105th record. Run 977, Event 13306, LumiSection 1 at 02-Dec-2015 15:01:27.336 CET
+Begin processing the 106th record. Run 977, Event 13367, LumiSection 1 at 02-Dec-2015 15:01:27.403 CET
+Begin processing the 107th record. Run 977, Event 13554, LumiSection 1 at 02-Dec-2015 15:01:27.531 CET
+Begin processing the 108th record. Run 977, Event 13900, LumiSection 1 at 02-Dec-2015 15:01:27.734 CET
+Begin processing the 109th record. Run 977, Event 13976, LumiSection 1 at 02-Dec-2015 15:01:27.813 CET
+Begin processing the 110th record. Run 977, Event 14069, LumiSection 1 at 02-Dec-2015 15:01:27.936 CET
+Begin processing the 111th record. Run 977, Event 14194, LumiSection 1 at 02-Dec-2015 15:01:28.023 CET
+Begin processing the 112th record. Run 977, Event 14254, LumiSection 1 at 02-Dec-2015 15:01:28.141 CET
+Begin processing the 113th record. Run 977, Event 14283, LumiSection 1 at 02-Dec-2015 15:01:28.247 CET
+Begin processing the 114th record. Run 977, Event 14337, LumiSection 1 at 02-Dec-2015 15:01:28.460 CET
+Begin processing the 115th record. Run 977, Event 14557, LumiSection 1 at 02-Dec-2015 15:01:28.586 CET
+Begin processing the 116th record. Run 977, Event 14639, LumiSection 1 at 02-Dec-2015 15:01:28.712 CET
+Begin processing the 117th record. Run 977, Event 14745, LumiSection 1 at 02-Dec-2015 15:01:28.887 CET
+Begin processing the 118th record. Run 977, Event 14865, LumiSection 1 at 02-Dec-2015 15:01:29.231 CET
+Begin processing the 119th record. Run 977, Event 14883, LumiSection 1 at 02-Dec-2015 15:01:29.368 CET
+Begin processing the 120th record. Run 977, Event 14952, LumiSection 1 at 02-Dec-2015 15:01:29.700 CET
+Begin processing the 121st record. Run 977, Event 15131, LumiSection 1 at 02-Dec-2015 15:01:29.798 CET
+Begin processing the 122nd record. Run 977, Event 15224, LumiSection 1 at 02-Dec-2015 15:01:29.910 CET
+Begin processing the 123rd record. Run 977, Event 15359, LumiSection 1 at 02-Dec-2015 15:01:30.070 CET
+Begin processing the 124th record. Run 977, Event 15471, LumiSection 1 at 02-Dec-2015 15:01:30.363 CET
+Begin processing the 125th record. Run 977, Event 15526, LumiSection 1 at 02-Dec-2015 15:01:30.499 CET
+Begin processing the 126th record. Run 977, Event 15606, LumiSection 1 at 02-Dec-2015 15:01:30.652 CET
+Begin processing the 127th record. Run 977, Event 15660, LumiSection 1 at 02-Dec-2015 15:01:30.782 CET
+Begin processing the 128th record. Run 977, Event 15815, LumiSection 1 at 02-Dec-2015 15:01:30.893 CET
+Begin processing the 129th record. Run 977, Event 16041, LumiSection 1 at 02-Dec-2015 15:01:31.014 CET
+Begin processing the 130th record. Run 977, Event 16067, LumiSection 1 at 02-Dec-2015 15:01:31.146 CET
+Begin processing the 131st record. Run 977, Event 16127, LumiSection 1 at 02-Dec-2015 15:01:31.207 CET
+Begin processing the 132nd record. Run 977, Event 16171, LumiSection 1 at 02-Dec-2015 15:01:31.371 CET
+Begin processing the 133rd record. Run 977, Event 16408, LumiSection 1 at 02-Dec-2015 15:01:31.508 CET
+Begin processing the 134th record. Run 977, Event 16495, LumiSection 1 at 02-Dec-2015 15:01:31.838 CET
+Begin processing the 135th record. Run 977, Event 16627, LumiSection 1 at 02-Dec-2015 15:01:32.057 CET
+Begin processing the 136th record. Run 977, Event 16640, LumiSection 1 at 02-Dec-2015 15:01:32.130 CET
+Begin processing the 137th record. Run 977, Event 16772, LumiSection 1 at 02-Dec-2015 15:01:32.262 CET
+Begin processing the 138th record. Run 977, Event 16776, LumiSection 1 at 02-Dec-2015 15:01:32.758 CET
+Begin processing the 139th record. Run 977, Event 17090, LumiSection 1 at 02-Dec-2015 15:01:33.001 CET
+Begin processing the 140th record. Run 977, Event 17092, LumiSection 1 at 02-Dec-2015 15:01:33.121 CET
+Begin processing the 141st record. Run 977, Event 17163, LumiSection 1 at 02-Dec-2015 15:01:33.239 CET
+Begin processing the 142nd record. Run 977, Event 17180, LumiSection 1 at 02-Dec-2015 15:01:33.588 CET
+Begin processing the 143rd record. Run 977, Event 17272, LumiSection 1 at 02-Dec-2015 15:01:33.839 CET
+Begin processing the 144th record. Run 977, Event 17322, LumiSection 1 at 02-Dec-2015 15:01:34.065 CET
+Begin processing the 145th record. Run 977, Event 17327, LumiSection 1 at 02-Dec-2015 15:01:34.129 CET
+Begin processing the 146th record. Run 977, Event 17425, LumiSection 1 at 02-Dec-2015 15:01:34.229 CET
+Begin processing the 147th record. Run 977, Event 17495, LumiSection 1 at 02-Dec-2015 15:01:34.386 CET
+Begin processing the 148th record. Run 977, Event 17831, LumiSection 1 at 02-Dec-2015 15:01:34.839 CET
+Begin processing the 149th record. Run 977, Event 17841, LumiSection 1 at 02-Dec-2015 15:01:35.024 CET
+02-Dec-2015 15:01:35 CET  Closed file root://eoscms//eos/cms/store/user/mshi/gg2H2aa2mumutautau_STEP_2_9GeV/gg2H2aa2mumutautau_STEP_2_9GeV_977.root
+
+=============================================
+
+MessageLogger Summary
+
+ type     category        sev    module        subroutine        count    total
+ ---- -------------------- -- ---------------- ----------------  -----    -----
+    1 XrdAdaptor           -w file_open                              1        1
+    2 fileAction           -s file_close                             1        1
+    3 fileAction           -s file_open                              2        2
+
+ type    category    Examples: run/evt        run/evt          run/evt
+ ---- -------------------- ---------------- ---------------- ----------------
+    1 XrdAdaptor           pre-events                        
+    2 fileAction           PostEndRun                        
+    3 fileAction           pre-events       pre-events       
+
+Severity    # Occurrences   Total Occurrences
+--------    -------------   -----------------
+Warning                 1                   1
+System                  3                   3

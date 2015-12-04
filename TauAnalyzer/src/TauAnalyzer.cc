@@ -1634,12 +1634,12 @@ void TauAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetu
     correctedJetPtrs.push_back(&correctedJet);
   }  
 
-  //fill collection of all corrected jets excluding the jet associated to the W muon or photon
+  ///fill collection of all corrected jets excluding the jet associated to the W muon or photon
   std::vector<reco::PFJet> correctedOldJets;
   std::vector<reco::PFJetRef> correctedOldJetRefs; //ref keys refer to original jet collection
-  for (reco::PFJetCollection::const_iterator iJet = correctedJets.begin(); 
-       iJet != correctedJets.end(); ++iJet) {
-    if (reco::deltaR(*trgCandPtrs[trgCandPtrs.size() - 1], *iJet) >= dR_) {
+  for (reco::PFJetCollection::const_iterator iJet = correctedJets.begin(); iJet != correctedJets.end(); ++iJet) {
+    if (reco::deltaR(*trgCandPtrs[trgCandPtrs.size() - 1], *iJet) >= dR_) 
+    {
       correctedOldJets.push_back(*iJet);
       correctedOldJetRefs.push_back(reco::PFJetRef(&correctedJets, iJet - correctedJets.begin()));
     }
@@ -1651,10 +1651,9 @@ void TauAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetu
   /*make and sort by pT refs to AK5 PF jets in the selected corrected collection (distinct from 
     this tau and the W muon*/
   std::vector<reco::PFJetRef> oldJetRefsExcludingTau;
-  for (reco::PFJetCollection::const_iterator iCorrectedJetExcludingTau = pCorrJets->begin(); 
-       iCorrectedJetExcludingTau != pCorrJets->end(); ++iCorrectedJetExcludingTau) {
-    oldJetRefsExcludingTau.
-      push_back(reco::PFJetRef(pCorrJets, iCorrectedJetExcludingTau - pCorrJets->begin()));
+  for (reco::PFJetCollection::const_iterator iCorrectedJetExcludingTau = pCorrJets->begin(); iCorrectedJetExcludingTau != pCorrJets->end(); ++iCorrectedJetExcludingTau) 
+  {
+    oldJetRefsExcludingTau.push_back(reco::PFJetRef(pCorrJets, iCorrectedJetExcludingTau - pCorrJets->begin()));
   }
   Common::sortByPT(oldJetRefsExcludingTau);
 
@@ -1690,16 +1689,15 @@ void TauAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetu
 
   //sort selected taus by descending order in pT
   std::vector<reco::PFTauRef> pTSortedTaus;
-  for (reco::PFTauRefVector::const_iterator iTau = pTaus->begin(); iTau != pTaus->end(); 
-       ++iTau) { pTSortedTaus.push_back(*iTau); }
+  for (reco::PFTauRefVector::const_iterator iTau = pTaus->begin(); iTau != pTaus->end(); ++iTau) { pTSortedTaus.push_back(*iTau); }
   std::vector<reco::PFTauRef> taus = pTSortedTaus;
   Common::sortByPT(pTSortedTaus);
   std::reverse(pTSortedTaus.begin(), pTSortedTaus.end());
 
   //sort selected taus by descending order in mu+had mass
   std::vector<reco::PFTauRef> muHadMassSortedTaus;
-  for (reco::PFTauRefVector::const_iterator iTau = pTaus->begin(); iTau != pTaus->end(); 
-       ++iTau) { muHadMassSortedTaus.push_back(*iTau); }
+  for (reco::PFTauRefVector::const_iterator iTau = pTaus->begin(); iTau != pTaus->end(); ++iTau)
+    { muHadMassSortedTaus.push_back(*iTau); }
   Common::sortByMass(pMuonJetMap, muHadMassSortedTaus);
 
   //mu+had object counter
@@ -1724,12 +1722,10 @@ void TauAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetu
     
     //make a collection of corrected old jets in |eta| < 2.4 not overlapping the W muon or tau
     std::vector<reco::PFJetRef> oldJetRefsExclTauNoPTCut;
-    for (reco::PFJetCollection::const_iterator iCorrectedJet = correctedOldJets.begin(); 
-	 iCorrectedJet != correctedOldJets.end(); ++iCorrectedJet) {
-      if ((fabs(iCorrectedJet->eta()) < 2.4) && (reco::deltaR(*iCorrectedJet, **iTau) >= dR_)) {
-	oldJetRefsExclTauNoPTCut.
-	  push_back(reco::PFJetRef(&correctedOldJets, iCorrectedJet - correctedOldJets.begin()));
-      }
+    for (reco::PFJetCollection::const_iterator iCorrectedJet = correctedOldJets.begin(); iCorrectedJet != correctedOldJets.end(); ++iCorrectedJet) 
+    {
+      if ((fabs(iCorrectedJet->eta()) < 2.4) && (reco::deltaR(*iCorrectedJet, **iTau) >= dR_)) 
+	oldJetRefsExclTauNoPTCut.push_back(reco::PFJetRef(&correctedOldJets, iCorrectedJet - correctedOldJets.begin()));
     }
     Common::sortByPT(oldJetRefsExclTauNoPTCut);
 
@@ -1930,9 +1926,7 @@ void TauAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetu
       FSR)*/
     double mWMuTauMuTauHad = -1.0;
     if (WMuonRefs.size() > 0) {
-      mWMuTauMuTauHad = (WMuonRefs[WMuonRefs.size() - 1]->p4() + 
-			 removedMuonRefs[removedMuonRefs.size() - 1]->p4() + 
-			 (*iTau)->p4()).M();
+      mWMuTauMuTauHad = (WMuonRefs[WMuonRefs.size() - 1]->p4() + removedMuonRefs[removedMuonRefs.size() - 1]->p4() + (*iTau)->p4()).M();
     }
 
 //     //calculate relative isolation of tau muon
@@ -1961,9 +1955,7 @@ void TauAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetu
     }
 
     //calculate mu + tau invariant mass for the highest pT muon
-    const double muHadMass = 
-      (removedMuonRefs[removedMuonRefs.size() - 1]->p4() + (*iTau)->p4()).M();
-    double muHadMassForPlotting = muHadMass;
+    const double muHadMass = (removedMuonRefs[removedMuonRefs.size() - 1]->p4() + (*iTau)->p4()).M(); double muHadMassForPlotting = muHadMass;
     // if ((muHadMassBins_.size() > 1) && (muHadMass >= muHadMassBins_[muHadMassBins_.size() - 1])) {
     //   muHadMassForPlotting = muHadMassBins_[muHadMassBins_.size() - 2];
     // }
@@ -1995,12 +1987,6 @@ void TauAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetu
     std::vector<reco::PFCandidatePtr>::const_iterator iTauSigCand = tauSigCands.begin();
     while ((iTauSigCand != tauSigCands.end()) && !threeMu1) {
 
-//       //debug
-//       std::cerr << "Tau signal candidate #" << iTauSigCand - tauSigCands.begin() << ":\n";
-//       std::cerr << "pT = " << (*iTauSigCand)->pt() << " GeV\n";
-//       std::cerr << "eta = " << (*iTauSigCand)->eta() << std::endl;
-//       std::cerr << "phi = " << (*iTauSigCand)->phi() << std::endl << std::endl;
-
       //get the tau signal candidate track if it exists
       reco::TrackRef tauSigCandTrackRef((*iTauSigCand)->trackRef());
       if (tauSigCandTrackRef.isNonnull()) {
@@ -2011,45 +1997,6 @@ void TauAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetu
 	  const unsigned int muKey = iMu - pAllMuons->begin();
 	  if ((muKey != removedMuonRefs[removedMuonRefs.size() - 1].key()) && 
 	      (muKey != WMuonRefs[WMuonRefs.size() - 1].key())) {
-
-	    // //debug
-	    // std::cerr << "Muon #" << iMu - pAllMuons->begin() << ":\n";
-	    // if (iMu->track().isNonnull()) {
-	    //   std::cerr << "Tracker track pT = " << iMu->track()->pt() << " GeV\n";
-	    //   std::cerr << "Tracker track eta = " << iMu->track()->eta() << std::endl;
-	    //   std::cerr << "Tracker track phi = " << iMu->track()->phi() << std::endl;
-	    // }
-	    // if (iMu->standAloneMuon().isNonnull()) {
-	    //   std::cerr << "Muon track pT = " << iMu->standAloneMuon()->pt() << " GeV\n";
-	    //   std::cerr << "Muon track eta = " << iMu->standAloneMuon()->eta() << std::endl;
-	    //   std::cerr << "Muon track phi = " << iMu->standAloneMuon()->phi() << std::endl;
-	    // }
-	    // if (iMu->combinedMuon().isNonnull()) {
-	    //   std::cerr << "Combined track pT = " << iMu->combinedMuon()->pt() << " GeV\n";
-	    //   std::cerr << "Combined track eta = " << iMu->combinedMuon()->eta() << std::endl;
-	    //   std::cerr << "Combined track phi = " << iMu->combinedMuon()->phi() << std::endl;
-	    // }
-	    // if (iMu->tpfmsTrack().isNonnull()) {
-	    //   std::cerr << "TPFMS track pT = " << iMu->tpfmsTrack()->pt() << " GeV\n";
-	    //   std::cerr << "TPFMS track eta = " << iMu->tpfmsTrack()->eta() << std::endl;
-	    //   std::cerr << "TPFMS track phi = " << iMu->tpfmsTrack()->phi() << std::endl;
-	    // }
-	    // if (iMu->pickyTrack().isNonnull()) {
-	    //   std::cerr << "Picky track pT = " << iMu->pickyTrack()->pt() << " GeV\n";
-	    //   std::cerr << "Picky track eta = " << iMu->pickyTrack()->eta() << std::endl;
-	    //   std::cerr << "Picky track phi = " << iMu->pickyTrack()->phi() << std::endl;
-	    // }
-	    // if (iMu->dytTrack().isNonnull()) {
-	    //   std::cerr << "DYT track pT = " << iMu->dytTrack()->pt() << " GeV\n";
-	    //   std::cerr << "DYT track eta = " << iMu->dytTrack()->eta() << std::endl;
-	    //   std::cerr << "DYT track phi = " << iMu->dytTrack()->phi() << std::endl;
-	    // }
-// 	    if (iMu->muonBestTrack().isNonnull()) {
-// 	      std::cerr << "Best track pT = " << iMu->muonBestTrack()->pt() << " GeV\n";
-// 	      std::cerr << "Best track eta = " << iMu->muonBestTrack()->eta() << std::endl;
-// 	      std::cerr << "Best track phi = " << iMu->muonBestTrack()->phi() << std::endl;
-// 	    }
-// 	    std::cerr << std::endl;
 
 	    //get best muon track ref
 	    if (iMu->isPFMuon() && iMu->muonBestTrack().isNonnull() && 

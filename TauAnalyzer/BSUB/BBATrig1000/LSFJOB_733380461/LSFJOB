@@ -1,0 +1,34 @@
+#! /bin/sh
+
+$LSB_TRAPSIGS
+$LSB_RCP1
+$LSB_RCP2
+$LSB_RCP3
+# LSBATCH: User input
+( cat <<_USER_\SCRIPT_
+#!/bin/bash
+
+export SCRAM_ARCH=slc6_amd64_gcc491
+cd /afs/cern.ch/user/k/ktos/BoostedDiTau/CMSSW_7_4_1_patch1/src
+eval `scramv1 runtime -sh`
+cd -
+source /afs/cern.ch/cms/caf/setup.sh
+cp /afs/cern.ch/user/k/ktos/BoostedDiTau/CMSSW_7_4_1_patch1/src/BoostedTauAnalysis/TauAnalyzer/BSUB/BBATrig1000/BBA_trig_cfg_1000_BBATrig1000_.py . 
+cmsRun BBA_trig_cfg_1000_BBATrig1000_.py
+cmsStage -f BBATrig1000.root /store/user/ktos/BBATrig1000
+rm BBA_trig_cfg_1000_BBATrig1000_.py 
+exit 0
+
+_USER_SCRIPT_
+) > $LSB_CHKFILENAME.shell
+chmod u+x $LSB_CHKFILENAME.shell
+/usr/local/lsf/etc/job_starter '$LSB_JOBFILENAME.shell'
+saveExit=$?
+/bin/rm -f $LSB_JOBFILENAME.shell
+(exit $saveExit)
+
+ExitStat=$?
+wait
+# LSBATCH: End user input
+true
+exit `expr $? "|" $ExitStat`

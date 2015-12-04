@@ -1,5 +1,5 @@
-#ifndef BBA_VariousFunctions_interface_VariousFunctions_h
-#define BBA_VariousFunctions_interface_VariousFunctions_h
+#ifndef BoostedTauAnalysis_VariousFunctions_interface_VariousFunctions_h
+#define BoostedTauAnalysis_VariousFunctions_interface_VariousFunctions_h
 
 #include <vector>
 #include "DataFormats/HepMCCandidate/interface/GenParticle.h"

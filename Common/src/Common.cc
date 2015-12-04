@@ -359,13 +359,15 @@ Common::getRecoTaus(const edm::Handle<reco::PFTauCollection>& pTaus,
 		    const double etaMax, const bool passIso, const double isoMax)
 {
   std::vector<reco::PFTauRef> taus;
-  for (reco::PFTauCollection::const_iterator iTau = pTaus->begin(); iTau != pTaus->end(); ++iTau) {
+  for (reco::PFTauCollection::const_iterator iTau = pTaus->begin(); iTau != pTaus->end(); ++iTau) 
+  {
     reco::PFTauRef tauRef(pTaus, iTau - pTaus->begin());
     bool passTauDiscriminators = true;
-    std::vector<edm::Handle<reco::PFTauDiscriminator> >::const_iterator iDiscriminator = 
-      pTauDiscriminators.begin();
-    while ((iDiscriminator != pTauDiscriminators.end()) && passTauDiscriminators) {
-      if ((**iDiscriminator)[tauRef] != 1.0) passTauDiscriminators = false;
+    std::vector<edm::Handle<reco::PFTauDiscriminator> >::const_iterator iDiscriminator = pTauDiscriminators.begin();
+    while ((iDiscriminator != pTauDiscriminators.end()) && passTauDiscriminators) 
+    {
+      if ((**iDiscriminator)[tauRef] != 1.0)
+        passTauDiscriminators = false;
       ++iDiscriminator;
     }
     if (((passIso && passTauDiscriminators) || (!passIso && !passTauDiscriminators)) && 

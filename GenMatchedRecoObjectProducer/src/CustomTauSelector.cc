@@ -178,7 +178,7 @@ bool CustomTauSelector<T>::filter(edm::Event& iEvent, const edm::EventSetup& iSe
   iEvent.getByLabel(tauHadIsoTag_, pTauHadIso);
 
   //get tau discriminators
-  std::vector<edm::Handle<reco::PFTauDiscriminator> > 
+  std::vector<edm::Handle<reco::PFTauDiscriminator> >
     pTauDiscriminators(tauDiscriminatorTags_.size(), edm::Handle<reco::PFTauDiscriminator>());
   for (std::vector<edm::InputTag>::const_iterator iTag = tauDiscriminatorTags_.begin(); 
        iTag != tauDiscriminatorTags_.end(); ++iTag) {

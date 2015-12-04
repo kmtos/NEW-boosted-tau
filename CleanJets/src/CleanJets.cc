@@ -113,9 +113,10 @@ class CleanJets : public edm::EDProducer {
       //Histograms
       TH1F* NMu_;
       TH1F* MuEnergy_;
-      TH2F* JetMuEnergyvsJetEnergy_;
+      TH2F* DiffJetEvsMuonE_;
       TH2F* JetEtavsMuEta_;
       TH2F* JetConstBeforevsAfter_;
+      TH1F* DiffConstituents_;
 };
 
 //
@@ -133,8 +134,7 @@ class CleanJets : public edm::EDProducer {
 CleanJets::CleanJets(const edm::ParameterSet& iConfig)
 {
   jetSrc_ = iConfig.getParameter<edm::InputTag>("jetSrc");
-  muonSrc_ = iConfig.existsAs<edm::InputTag>("muonSrc") ? 
-    iConfig.getParameter<edm::InputTag>("muonSrc") : edm::InputTag();
+  muonSrc_ = iConfig.getParameter<edm::InputTag>("muonSrc");
   PFCandSrc_ = iConfig.getParameter<edm::InputTag>("PFCandSrc");
   outFileName_ = iConfig.getParameter<std::string>("outFileName");
   cutOnGenMatches_ = iConfig.getParameter<bool>("cutOnGenMatches");
@@ -144,9 +144,9 @@ CleanJets::CleanJets(const edm::ParameterSet& iConfig)
 
   //register your products
   produces<PFJetCollection>( "ak4PFJetsNoMu" );
-  produces<edm::ValueMap<bool> >();
-  produces<edm::ValueMap<MuonRefVector> >();
-  produces<edm::ValueMap<PFJetRef> >();
+  produces<edm::ValueMap<bool> >( "valMap" );
+  produces<edm::ValueMap<MuonRefVector> >( "muonValMap" );
+  produces<edm::ValueMap<PFJetRef> >( "jetValMap" );
   produces<PFCandidateCollection>();
   
 }
@@ -175,8 +175,7 @@ CleanJets::produce(edm::Event& iEvent, const edm::EventSetup& iSetup)
    auto_ptr<PFJetCollection> SetOfJets( new PFJetCollection );
 
    Handle<MuonRefVector> muons;
-   if (muonSrc_ == InputTag()) {}
-   else iEvent.getByLabel(muonSrc_, muons);
+   iEvent.getByLabel(muonSrc_, muons);
 
    Handle<PFCandidateCollection> PFCands;
    iEvent.getByLabel(PFCandSrc_, PFCands);
@@ -200,7 +199,7 @@ CleanJets::produce(edm::Event& iEvent, const edm::EventSetup& iSetup)
    std::vector<PFJetRef> oldJets;
 
    std::vector<reco::PFJet> pfjetVector;
-   for (PFJetCollection::const_iterator j = PFJets->begin(); j != PFJets->end(); ++ j)
+   for (PFJetCollection::const_iterator j = PFJets->begin(); j != PFJets->end(); ++j)
      pfjetVector.push_back(*j);
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -211,20 +210,10 @@ CleanJets::produce(edm::Event& iEvent, const edm::EventSetup& iSetup)
    
    for(reco::PFJetCollection::const_iterator iJet = PFJets->begin(); iJet != PFJets->end(); ++iJet)
    { // loop over jets
-       
        std::vector<reco::PFCandidatePtr> JetPFCands = iJet->getPFConstituents();
        reco::PFJet::Specific specs = iJet->getSpecific();
        double jetEBefore = iJet->energy(), muEta = 1000, muE = -10;
-       unsigned int nConstBefore = JetPFCands.size(), nConstAfter;
-       if (iJet->getSpecific().mMuonEnergy > 0 )
-       {
-         cout << "JET INFO" << endl;
-         cout << "jet mMuonEnergy = " << iJet->getSpecific().mMuonEnergy << endl;
-         cout << "jet mMuonMultiplicity = " << iJet->getSpecific().mMuonMultiplicity << endl;
-         cout << "jet mChargedMuEnergy = " << iJet->getSpecific().mChargedMuEnergy << endl;
-         cout << "jet mChargedMultiplicity = " << iJet->getSpecific().mChargedMultiplicity << endl;
-         cout << "END JET INFO" << endl;
-       }       
+       unsigned int nConstBefore = JetPFCands.size();
        math::XYZTLorentzVector pfmomentum;
        std::vector<edm::Ptr<Candidate> > jetConstituents;
        jetConstituents.clear();
@@ -253,7 +242,6 @@ CleanJets::produce(edm::Event& iEvent, const edm::EventSetup& iSetup)
 	   /*if we're not requiring gen matching but instead looking for muons in jets that pass the desired muon ID...*/
 	   if (iSoftMuon != muonRefKeys.end())
 	   {
-std::cout <<"<--------------CHECK------------------->" << std::endl;	     //remove this muon
              muE = pfCand.p4().e();
 	     muEta = pfCand.p4().eta();
 	     specs.mMuonEnergy -= pfCand.p4().e();
@@ -297,16 +285,16 @@ std::cout <<"<--------------CHECK------------------->" << std::endl;	     //remo
        oldJets.push_back(PFJetRef(PFJets, iJet - PFJets->begin()));
 
        NMu_->Fill(PFCandMuons );
-       nConstAfter = JetPFCands.size();
        if (taggedMuonForRemoval)
        {
-         JetConstBeforevsAfter_->Fill(nConstBefore, nConstAfter);
-         JetMuEnergyvsJetEnergy_->Fill(jetEBefore, iJet->energy() );
+         JetConstBeforevsAfter_->Fill(nConstBefore, jetConstituents.size());
+         DiffJetEvsMuonE_->Fill(jetEBefore - muonfreePFJet.energy(), muE );
          JetEtavsMuEta_->Fill(iJet->eta(), muEta );
 	 MuEnergy_->Fill(muE );
-         std::cout << "\tnConst: Before= " << nConstBefore << " After= " << nConstAfter << " jetConstituents.size= " << jetConstituents.size() << std::endl;
-	 std::cout << "\tJetE  : Before= " << jetEBefore << " After= " << iJet->energy() << "muonfreePFJet= " << muonfreePFJet.energy() << " Muon E= " << muE << std::endl;
-	 std::cout << "\tMuEta= " << muEta << "iJet->eta()= " << iJet->eta() << std::endl;
+         //std::cout << "\tnConst: Before= " << nConstBefore << " \tjetConstituents.size= " << jetConstituents.size() << std::endl;
+	 //std::cout << "\tJetE  : Before= " << jetEBefore << " \tmuonfreePFJet= " << muonfreePFJet.energy() << " \tMuon E= " << muE << std::endl;
+	 //std::cout << "\tMuEta= " << muEta << " \tetiJet->eta()= " << iJet->eta() << std::endl;
+	 DiffConstituents_->Fill( nConstBefore - jetConstituents.size());
        }
  
    } // loop over jets
@@ -339,21 +327,21 @@ std::cout <<"<--------------CHECK------------------->" << std::endl;	     //remo
    edm::ValueMap<bool>::Filler filler(*valMap);
    filler.insert(cleanedJetsRefProd, muonTagDecisions.begin(), muonTagDecisions.end());
    filler.fill();
-   iEvent.put(valMap);
+   iEvent.put(valMap, "valMap" );
 
    //fill the value map of removed muon refs for each cleaned jet
    std::auto_ptr<edm::ValueMap<MuonRefVector> > muonValMap(new edm::ValueMap<MuonRefVector>());
    edm::ValueMap<MuonRefVector>::Filler muonFiller(*muonValMap);
    muonFiller.insert(cleanedJetsRefProd, removedMuonMap.begin(), removedMuonMap.end());
    muonFiller.fill();
-   iEvent.put(muonValMap);
+   iEvent.put(muonValMap, "muonValMap" );
 
    //fill the value map of old jet refs for each cleaned jet
    std::auto_ptr<edm::ValueMap<PFJetRef> > jetValMap(new edm::ValueMap<PFJetRef>());
    edm::ValueMap<PFJetRef>::Filler jetFiller(*jetValMap);
    jetFiller.insert(cleanedJetsRefProd, oldJets.begin(), oldJets.end());
    jetFiller.fill();
-   iEvent.put(jetValMap);
+   iEvent.put(jetValMap, "jetValMap" );
 
    //put the soft-muon-free PF cands into the event
    iEvent.put(PFCandsExcludingSoftMuons);
@@ -368,9 +356,10 @@ CleanJets::beginJob()
  
   NMu_= new TH1F("NMu", "", 7, -.5, 6.5);
   MuEnergy_= new TH1F("MuEnergy", "", 50, -.5, 50);
-  JetMuEnergyvsJetEnergy_ = new TH2F("JetMuEnergyvsJetEnergy", "", 25, 0, 25, 50, 0, 50);
+  DiffJetEvsMuonE_ = new TH2F("DiffJetEvsMuonE", "", 50, 0, 50, 50, 0, 50);
   JetEtavsMuEta_ = new TH2F("JetEtavsMuEta", "", 20, -5, 5, 20, -5, 5);
-  JetConstBeforevsAfter_ = new TH2F("JetConstBeforevsAfter", "", 20, -5, 5, 20, -5, 5);
+  JetConstBeforevsAfter_ = new TH2F("JetConstBeforevsAfter", "", 20, 0, 20, 20, 0, 20);
+  DiffConstituents_= new TH1F("DiffConstituents", "", 8, -1.5, 6.5);
 }
 
 // ------------ method called once each job just after ending the event loop  ------------
@@ -381,22 +370,24 @@ CleanJets::endJob()
 
   TCanvas NMuCanvas_("NMuCanvas","",600,600);
   TCanvas MuEnergyCanvas_("MuEnergyCanvas","",600,600);
-  TCanvas JetMuEnergyvsJetEnergyCanvas_("JetMuEnergyvsJetEnergyCanvas","",600,600);
+  TCanvas DiffJetEvsMuonECanvas_("DiffJetEvsMuonECanvas","",600,600);
   TCanvas JetEtavsMuEtaCanvas_("JetEtavsMuEtaCanvas","",600,600);
   TCanvas JetConstBeforevsAfterCanvas_("JetConstBeforevsAfterCanvas","",600,600);
+  TCanvas DiffConstituentsCanvas_("DiffConstituentsCanvas","",600,600);
 
   VariousFunctions::formatAndDrawCanvasAndHist1D(NMuCanvas_, NMu_, 1, 0, 0, kBlack, 7, 20, "Number of Muons", .04, .04, 1.1,  "", .04, .04, 1.0, false);
   VariousFunctions::formatAndDrawCanvasAndHist1D(MuEnergyCanvas_, MuEnergy_, 1, 0, 0, kBlack, 7, 20, "pt(#mu) of NonIsoTrig", .04, .04, 1.1,  "", .04, .04, 1.0, false);
-  VariousFunctions::formatAndDrawCanvasAndHist2D(JetMuEnergyvsJetEnergyCanvas_, JetMuEnergyvsJetEnergy_, 0, 0, 0, kBlack, 7, 20, "Jet+#mu Energy", .04, .04, 1.1, "jet Energy", .04, .04, 1.6, "", .04, .04, 1.0);
+  VariousFunctions::formatAndDrawCanvasAndHist2D(DiffJetEvsMuonECanvas_, DiffJetEvsMuonE_, 0, 0, 0, kBlack, 7, 20, "Difference in jet E", .04, .04, 1.1, "#mu Energy", .04, .04, 1.6, "", .04, .04, 1.0);
   VariousFunctions::formatAndDrawCanvasAndHist2D(JetEtavsMuEtaCanvas_, JetEtavsMuEta_, 0, 0, 0, kBlack, 7, 20, "#eta(jet)", .04, .04, 1.1, "#eta(#mu)", .04, .04, 1.6, "", .04, .04, 1.0);
-  VariousFunctions::formatAndDrawCanvasAndHist2D(JetConstBeforevsAfterCanvas_, JetConstBeforevsAfter_, 0, 0, 0, kBlack, 7, 20, "#eta(jet)", .04, .04, 1.1, "#eta(#mu)", .04, .04, 1.6, "", .04, .04, 1.0);
-
+  VariousFunctions::formatAndDrawCanvasAndHist2D(JetConstBeforevsAfterCanvas_, JetConstBeforevsAfter_, 0, 0, 0, kBlack, 7, 20, "nConstituents Before", .04, .04, 1.1, "nConstituents After", .04, .04, 1.6, "", .04, .04, 1.0);
+  VariousFunctions::formatAndDrawCanvasAndHist1D(DiffConstituentsCanvas_, DiffConstituents_, 1, 0, 0, kBlack, 7, 20, "Difference of Constituents", .04, .04, 1.1,  "", .04, .04, 1.0, false);
 
   NMuCanvas_.Write();
   MuEnergyCanvas_.Write();
-  JetMuEnergyvsJetEnergyCanvas_.Write();
+  DiffJetEvsMuonECanvas_.Write();
   JetEtavsMuEtaCanvas_.Write();
   JetConstBeforevsAfterCanvas_.Write();
+  DiffConstituentsCanvas_.Write();
   out_->Write();
   out_->Close();
 }
